@@ -1,7 +1,6 @@
 import React from 'react'
-import { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { login } from '../lib/api';
+
+import useLogin from '../hooks/useLogin.js';
 import { ShipWheelIcon } from 'lucide-react';
 
 const LoginPage = () => {
@@ -10,13 +9,8 @@ const LoginPage = () => {
     password : "",
   });
 
-  const queryClient = useQueryClient();
 
-  const { mutate: loginMutation, isPending, error } = useMutation({
-    mutationFn: login,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["authUser"] }),
-  });
-
+  const {isPending,error,loginMutation} = useLogin();
   const handleLogin = (e) => {
     e.preventDefault();
     loginMutation(logindata);
@@ -29,7 +23,7 @@ const LoginPage = () => {
           <div className='mb-4 flex items-center justify-start gap-2'>
             <ShipWheelIcon className='size-9 text-primary' />
             <span className='text-3xl font-bold font-mono bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary tracking-wider'>
-              Chatter
+              Chatter-box
             </span>
           </div>
 
@@ -39,7 +33,7 @@ const LoginPage = () => {
               <span>{error.response.data.message}</span>
             </div>
           )}
-
+        <div className="w-full">
           <form onSubmit={handleLogin}>
             <div className='space-y-4'>
               <div>
@@ -49,7 +43,7 @@ const LoginPage = () => {
                 </p>
               </div>
 
-              <div className='flex flex-col gap-2'>
+              <div className='flex flex-col gap-3'>
                 <div className='form-control w-full space-y-2'>
                   <label className='label'>
                     <span className='label-text'>Email</span>
@@ -63,9 +57,50 @@ const LoginPage = () => {
                     required
                   />
                 </div>
+                <div className='form-control w-full space-y-2'>
+                  <label className='label'>
+                    <span className='label-text'>Password</span>
+                  </label>
+                  <input
+                    type="password"
+                    placeholder='Enter your password'
+                    className='input input-bordered w-full'
+                    value={logindata.password}
+                    onChange={(e) => setLoginData({ ...logindata, password: e.target.value })}
+                    required
+                  />
+                </div>
+                <button type="submit" className='btn btn-primary' disabled={isPending}>{isPending ? <><span className="loading loading-spinner loading-xs"></span> signing in...</> : "Sign In"}</button>
+                <div className='text-center mt-4'>
+                  <p className='text-sm'>
+                    Don't have an account?{" "}
+                    <a href="/signup" className='text-primary hover:underline'>
+                      Sign Up
+                    </a>
+                  </p>
+                </div>
               </div>  
             </div>
           </form>
+          </div>
+        </div>
+        {/* image */}
+        <div className='hidden lg:flex w-full lg:w-1/2 bg-primary/2 items-center justify-center'>
+          
+          <div className='max-w-md p-8'>
+            <div className='relative aspect-square max-w-sm mx-auto'>
+              <img src="/i.png" alt="Language connection illustration" className="w-full h-full" /> 
+            </div>
+            <div className='text-center space-y-3 mt-6'>
+              <h2 className='text-xl font-semibold'>
+                connect with language partners worldwide
+              </h2>
+              <p className='text-sm opacity-70'>
+                Connect with others who share your passion for language learning.
+              </p>
+              
+            </div>
+          </div>
         </div>
       </div>
     </div> 

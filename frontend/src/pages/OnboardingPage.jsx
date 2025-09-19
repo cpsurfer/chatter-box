@@ -45,8 +45,8 @@ const OnboardingPage = () => {
   }
 
   return (
-    <div className='min-h-screen flex flex-row justify-center items-center p-4'>
-      <div className='card bg-base-200 w-full h- max-w-2xl shadow-xl'>
+    <div className='min-h-screen flex flex-col justify-start items-center p-4'>
+      <div className='card bg-base-200 w-full h- max-w-xl lg:max-w-2xl shadow-xl'>
         <div className='card-body p-4 sm:p-6'>
           <h1 className='flex items-center justify-center text-3xl font-bold text-white'>Complete your profile</h1>
           <form onSubmit={handleOnboarding} className='space-y-6'>
