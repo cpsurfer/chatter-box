@@ -12,9 +12,7 @@
 	"license": "ISC",
 	"type": "module",
 	"dependencies": {
-		"backend": "file:",
 		"bcryptjs": "^3.0.2",
-		"chatter": "file:..",
 		"cookie-parser": "^1.4.7",
 		"cors": "^2.8.5",
 		"dotenv": "^16.5.0",
