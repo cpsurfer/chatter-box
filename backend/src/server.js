@@ -25,8 +25,8 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);
-app.use("/api/users", protectRoute, userRoutes);
-app.use("/api/chat", protectRoute, chatRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/chat", chatRoutes);
 
 // Corrected Code
 if (process.env.NODE_ENV === "production") {
