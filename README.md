@@ -14,7 +14,7 @@ An online chat application that helps you learn languages by talking to native s
 
 ## Tech Stack
 
-- **Frontend**: JavaScript (ES6+), HTML5, CSS3
+- **Frontend**: react.js, tailwind.js
 - **Backend**: Node.js, Express.js
 - **Real-time**: Socket.IO
 - **Video/Voice**: WebRTC
