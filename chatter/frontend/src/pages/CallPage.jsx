@@ -39,8 +39,6 @@ const CallPage = () => {
       return;
     }
 
-    if(client) return;
-
     const initCall = async () => {
       try {
         console.log("Initializing Stream video client...");
@@ -79,7 +77,7 @@ const CallPage = () => {
             setCall(null);
         }
     }
-  }, [isLoadingToken, isLoading, authUser, tokenData, callId]); // Added client to dependencies
+  }, [isLoadingToken, isLoading, authUser, tokenData, callId, client]); // Added client to dependencies
 
   if (isLoadingToken || isLoading || !client || !call) return <PageLoader />;
 
