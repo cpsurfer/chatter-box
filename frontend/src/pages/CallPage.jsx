@@ -79,7 +79,7 @@ const CallPage = () => {
             setCall(null);
         }
     }
-  }, [isLoadingToken, isLoading, authUser, tokenData, callId]); // Added client to dependencies
+  }, [isLoadingToken, isLoading, authUser, tokenData, callId]);
 
   if (isLoadingToken || isLoading || !client || !call) return <PageLoader />;
 
